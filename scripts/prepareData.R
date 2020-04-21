@@ -48,7 +48,7 @@ dataFiles <- c(
   p[impossibleSel, ]$p <- "E"
 
   # save csv for reference
-  write_csv(p, here("data", "1-phenotypeDefinition.csv"))
+  write_csv(p, here("1-phenotypeDefinition.csv"))
   
 
 ## add phenotype to data & save
@@ -60,7 +60,7 @@ dataFiles <- c(
 
   for (i in seq_along(dataFiles)) {
     rawData <- read_csv(
-      file = here("data", "raw", dataFiles[i]),
+      file = here("raw", dataFiles[i]),
       col_types = "iiciiicccdllllc")
     phenotypes[[i]] <- rawData %>%
       mutate(
@@ -108,7 +108,7 @@ dataFiles <- c(
         max = max(f),
         min = min(f))
     # save in file
-    write_csv(phenotypes[[i]], path = here("data", str_replace(dataFiles[i], "-raw-", "-")))
-    write_csv(frequencies[[i]], path = here("data", str_replace(dataFiles[i], "-raw-", "-F-")))
-    write_csv(meanFrequencies[[i]], path = here("data", str_replace(dataFiles[i], "-raw-", "-meanF-")))
+    write_csv(phenotypes[[i]], path = here(str_replace(dataFiles[i], "-raw-", "-")))
+    write_csv(frequencies[[i]], path = here(str_replace(dataFiles[i], "-raw-", "-F-")))
+    write_csv(meanFrequencies[[i]], path = here(str_replace(dataFiles[i], "-raw-", "-meanF-")))
   }

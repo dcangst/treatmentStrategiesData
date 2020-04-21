@@ -4,8 +4,12 @@
 # Packages
 library(here)
 library(tidyverse)
+
 # common plot parameters
-source(here("figures/scripts/plotParameter.R"))
+source(here("scripts/plotParameter.R"))
+
+# output directory for plots
+outDir <- "/Users/daniel/Documents/work/projects/TreatmentStrategies/Paper"
 
 # data
 dataFiles <- c(
@@ -16,7 +20,7 @@ dataFiles <- c(
 meanFrequencies <- list()
 for (i in dataFiles) {
   meanFrequencies[[i]] <- read_csv(
-    file = here("data", i),
+    file = here(i),
     col_types = "iicdiddd") %>%
     # drop phenotype E if it doesn't show up
     filter(!(p == "E" & mean == 0)) %>%
@@ -28,7 +32,7 @@ for (i in dataFiles) {
 
 simDataFile <- "SIM-F-sensitiveCommunity.csv"
 simFrequencies <- read_csv(
-  file = here("data", "simulation", simDataFile),
+  file = here("simulation", simDataFile),
   col_types = "iicd"
   ) %>%
   # add A/B for plotting purposes
@@ -81,7 +85,7 @@ plotAllPlatesSensitiveSim <- plotAllPlatesRibbon +
 plotWidth <- 110
 plotHeight <- 100
 ggsave(
-  filename = here("figures", "fig1partA-timeseries-sensitiveCommunity.pdf"),
+  filename = file.path(outDir, "figures", "fig1partA-timeseries-sensitiveCommunity.pdf"),
   plot = plotAllPlatesSensitiveSim,
   dpi = 600,
   width = plotWidth, height = plotHeight, units = "mm")
@@ -116,18 +120,18 @@ plateLabelsT53[3] <- "c) mono B / A (40+)"
 plotAllPlatesSISensitive <- plotAllPlatesSI +
     facet_wrap(vars(plate), ncol = 2, nrow = 3, labeller = labeller(plate = plateLabelsT53))
 ggsave(
-  filename = here("SI", "S3_Fig.pdf"),
+  filename = file.path(outDir, "SI", "S3_Fig.pdf"),
   plot = plotAllPlatesSISensitive %+% meanFrequencies[[1]],
   width = plotWidth, height = plotHeight, units = "mm")
 
 # complete timeseries singleResistantCommunity
 ggsave(
-  filename = here("SI", "S4_Fig.pdf"),
+  filename = file.path(outDir, "SI", "S4_Fig.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[3]],
   width = plotWidth, height = plotHeight, units = "mm")
 
 # complete timeseries doubleResistantCommunity
 ggsave(
-  filename = here("SI", "S5_Fig.pdf"),
+  filename = file.path(outDir, "SI", "S5_Fig.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[2]],
   width = plotWidth, height = plotHeight, units = "mm")

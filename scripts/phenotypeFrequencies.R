@@ -8,7 +8,10 @@ library(multcompView)
 library(knitr)
 library(kableExtra)
 # common plot parameters
-source(here("figures/scripts/plotParameter.R"))
+source(here("scripts/plotParameter.R"))
+
+# output directory for plots & tables
+outDir <- "/Users/daniel/Documents/work/projects/TreatmentStrategies/Paper"
 
 # data
 dataFiles <- c(
@@ -29,7 +32,7 @@ experimentNamesPrint <- c(
 frequenciesList <- list()
 for (i in seq_along(dataFiles)) {
   frequenciesList[[i]] <- read_csv(
-    file = here("data", dataFiles[i]),
+    file = here(dataFiles[i]),
     col_types = "iiicid") %>%
     filter(p != "E") %>%
     mutate(
@@ -217,8 +220,9 @@ for (i in seq_along(testRSU$mcompSum)) {
     escape = FALSE
   ) %>%
   kable_styling(latex_options = c("repeat_header"))
+  
   write(str_c(texTableAov, "\n\n", texTableMcomp),
-    file = here("SI", "tables", str_c("tableSI-phenotypeFrequencyComparisonRSU-raw-",i,".tex"))) 
+    file = file.path(outDir, "SI", "tables", str_c("tableSI-phenotypeFrequencyComparisonRSU-raw-",i,".tex"))) 
 }
 
 # Figures
@@ -285,7 +289,7 @@ plotWidth <- 100
 plotHeight <- 90
 
 ggsave(
-  filename = here("figures", "fig3.tiff"),
+  filename = file.path(outDir, "figures", "fig3.tiff"),
   device = "tiff",
   compression = "lzw", type = "cairo",
   dpi = 600,
@@ -299,13 +303,13 @@ ggsave(
 dataFile <- "20191124-raw-combinationTreatments.csv"
 
 rawData <- read_csv(
-  file = here("data", "raw", dataFile),
+  file = here("raw", dataFile),
   col_types = "iiciiicicdllllc")
 
 odThreshold <- 0.1
 # phenotypes
 p <- read_csv(
-  file = here("data", "1-phenotypeDefinition.csv"),
+  file = here("1-phenotypeDefinition.csv"),
   col_types = "llllllllic")
 # treatment Info
 comboTreatments <- tribble(
@@ -424,7 +428,7 @@ comboTreatments <- tribble(
   plotHeight <- 75
 
   ggsave(
-    filename = here("figures", "fig4.tiff"),
+    filename = file.path(outDir, "figures", "fig4.tiff"),
     device = "tiff",
     compression = "lzw", type = "cairo",
     dpi = 600,
@@ -490,16 +494,16 @@ comboTreatments <- tribble(
       mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
 
   ggsave(
-    filename = here("SI", "S6_FigPartA-timeseries-combinationTreatments-HLphenotype.pdf"),
+    filename = file.path(outDir, "SI", "S6_FigPartA-timeseries-combinationTreatments-HLphenotype.pdf"),
     plot = plotAllPlatesComboTx %+% plotDataHL,
     width = plotWidth, height = plotHeight, units = "mm")
-  plotAllPlatesComboTx %+% plotDataHL
+
   # Timeseries with phenotypes not sensitive to current level of drugs (i.e. not sensitive to the current treatment)
   plotDataLL <- filter(meanFrequenciesCombo, pType == "LL") %>%
       mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
   
   ggsave(
-    filename = here("SI", "S6_FigPartB-timeseries-combinationTreatments-LLphenotype.pdf"),
+    filename = file.path(outDir,"SI", "S6_FigPartB-timeseries-combinationTreatments-LLphenotype.pdf"),
     plot = plotAllPlatesComboTx %+% plotDataLL,
     width = plotWidth, height = plotHeight, units = "mm")
 
@@ -674,7 +678,7 @@ plotWidth <- 100
 plotHeight <- 50
 
 # ggsave(
-#   filename = here("figures", "fig-phenotypeFrequenciesComboLL-R-U.pdf"),
+#   filename = file.path(outDir, "figures", "fig-phenotypeFrequenciesComboLL-R-U.pdf"),
 #   plot = freqPlotAllResHL,
 #   width = plotWidth, height = plotHeight, units = "mm",
 #   device = cairo_pdf)
