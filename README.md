@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/257538463.svg)](https://zenodo.org/badge/latestdoi/257538463)
 # Treatment Strategies Data Files & Scripts
 
 This repository contains all experimental data for the paper LINK AND CITE ONCE PUBLISHED as well as the scripts used for analysis.
