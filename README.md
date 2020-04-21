@@ -1,4 +1,8 @@
-# Treatment Strategies Data Files
+# Treatment Strategies Data Files & Scripts
+
+This repository contains all experimental data for the paper LINK AND CITE ONCE PUBLISHED as well as the scripts used for analysis.
+
+# Description of files
 
 ## 1-phenotypeDefinition.csv
 
@@ -24,12 +28,12 @@ Phenotypes were defined using the following set of rules:
   - **p256**: integer 0-255, representation of boolean growth variables as an 8-bit integer.
   - **p**: phenotype name. A corresponds to nalidix acid, B to streptomycin.
 
-### 20180424-sensitiveCommunity.csv
+## 20180424-sensitiveCommunity.csv
 
   Results from experiment with a completely sensitive community.
   created from 'raw' data files using the script `prepareData.R` script.
 
-#### Community
+### Community
   |p  | p256|         f|
   |:--|----:|---------:|
   |AB |    3|         0|
@@ -38,7 +42,7 @@ Phenotypes were defined using the following set of rules:
   |WT |    1| 0.8510638|
   |U  |    0| 0.1489362|
 
-#### Treatments
+### Treatments
 | plate|conditions_name     |drugs       |concentration | period|probability |description                                            |
 |-----:|:-------------------|:-----------|:-------------|------:|:-----------|:------------------------------------------------------|
 |     1|no treatment        |none        |1             |      1|1           |no treatment                                           |
@@ -48,13 +52,13 @@ Phenotypes were defined using the following set of rules:
 |     5|cycling             |A, B        |1,1           |      2|1           |Cycling: Nal / Sm, period = 2                            |
 |     6|mixing              |A, B        |1,1           |      1|0.5, 0.5    |Mixing: Nal / Sm, probability = 0.5                    |
 
-#### Rates
+### Rates
 
 | turnover| infection|
 |--------:|---------:|
 |      0.2|       0.3|
 
-#### Columns (`col_types = "iiciiicicdic"`)
+### Columns (`col_types = "iiciiicicdic"`)
  - **plate**: integer, number of plate
  - **well**: integer, number of well on plate
  - **row**: character [A-P], row on plate
@@ -68,11 +72,11 @@ Phenotypes were defined using the following set of rules:
  - **p256**: integer 0-255, phenotype after incubation (see above)
  - **p**: character, phenotype after incubation (see above)
 
-### 20190627-doubleResistantCommunity.csv
+## 20190627-doubleResistantCommunity.csv
 
   same as above except community is modelled to contain both single resistant and double resistant bacteria.
 
-#### Community
+### Community
 |p  | p256|         f|
 |:--|----:|---------:|
 |AB |    3| 0.0531915|
@@ -82,11 +86,11 @@ Phenotypes were defined using the following set of rules:
 |U  |    0| 0.2127660|
 
 
-### 20190816-singleResistantCommunity.csv
+## 20190816-singleResistantCommunity.csv
 
   same as above except community is modelled to contain only single resistant bacteria.
 
-#### Community
+### Community
 |p  | p256|         f|
 |:--|----:|---------:|
 |AB |    3|         0|
@@ -96,7 +100,7 @@ Phenotypes were defined using the following set of rules:
 |U  |    0| 0.2127660|
 
 
-### 20191124-combinationTreatments.csv
+## 20191124-combinationTreatments.csv
 
   same experiment parameters as 20180424-SensitiveCommunity.csv, but only combination treatments using different concentrations (different multiples of MIC)
 
@@ -111,11 +115,11 @@ Phenotypes were defined using the following set of rules:
 |     7|combo: 1/0.5    |AB105  |             1|      1|           1|Combination therapy: Nal10 + Sm3.125 |
 |     8|combo: 0.5/0.5  |AB0505 |             1|      1|           1|Combination therapy: Nal5 + Sm3.125  |
 
-### 'F' files (e.g. 20180424-F-sensitiveCommunity.csv)
+## 'F' files (e.g. 20180424-F-sensitiveCommunity.csv)
 
 Tables of phenotype frequencies in the experiments
 
-#### Columns (col_types = "iiicid")
+### Columns (col_types = "iiicid")
 - **plate**: integer, number of plate
 - **transfer**: integer, transfer number
 - **rep**: integer 1-4, number of replicate
@@ -123,11 +127,11 @@ Tables of phenotype frequencies in the experiments
 - **n**: integer, number of cultures with phenotype
 - **f**: double, frequency of phenotype = n/94
 
-### 'meanF' files (e.g. 20180424-meanF-sensitiveCommunity.csv)
+## 'meanF' files (e.g. 20180424-meanF-sensitiveCommunity.csv)
 
 Tables of mean phenotype frequencies in the experiments
 
-#### Columns (col_types = "iicdidd")
+### Columns (col_types = "iicdidd")
 - **plate**: integer, number of plate
 - **transfer**: integer, transfer number
 - **p**: character, phenotype after incubation (see above)
@@ -137,9 +141,9 @@ Tables of mean phenotype frequencies in the experiments
 - **max**: double, maximal frequency of phenotyp across n replicates
 - **min**: double, minimal frequency of phenotyp across n replicates
 
-### raw data files (in Folder /raw/)
+## raw data files (in Folder /raw/)
 
-#### Columns (col_types = "iiciiicicdllllc")
+### Columns (col_types = "iiciiicicdllllc")
 - **plate**: integer, number of plate
 - **well**: integer, number of well on plate
 - **row**: character [A-P], row on plate
@@ -155,3 +159,11 @@ Tables of mean phenotype frequencies in the experiments
 - **agarB**: boolean, visible growth on MS Agar containing 100µg/ml streptomycin.
 - **agarAB**: boolean 40µg/ml nalidixic acid (agarA) and 100µg/ml streptomycin (agarAB)
 - **type**: character, either 'exp' or 'blank', indicating blank wells.
+
+## simulation results (in Folder /simulation/)
+
+### Columns (col_types = "iicd")
+- **plate**: integer, number of plate
+- **transfer**: integer, transfer number
+- **p**: character, phenotype (see above)
+- **f**: double, frequency of phenotype
