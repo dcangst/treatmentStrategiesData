@@ -120,18 +120,18 @@ plateLabelsT53[3] <- "c) mono B / A (40+)"
 plotAllPlatesSISensitive <- plotAllPlatesSI +
     facet_wrap(vars(plate), ncol = 2, nrow = 3, labeller = labeller(plate = plateLabelsT53))
 ggsave(
-  filename = file.path(outDir, "SI", "S3_Fig.pdf"),
+  filename = file.path(outDir, "SI", "FigS4.pdf"),
   plot = plotAllPlatesSISensitive %+% meanFrequencies[[1]],
   width = plotWidth, height = plotHeight, units = "mm")
 
 # complete timeseries singleResistantCommunity
 ggsave(
-  filename = file.path(outDir, "SI", "S4_Fig.pdf"),
+  filename = file.path(outDir, "SI", "FigS5.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[3]],
   width = plotWidth, height = plotHeight, units = "mm")
 
 # complete timeseries doubleResistantCommunity
 ggsave(
-  filename = file.path(outDir, "SI", "S5_Fig.pdf"),
+  filename = file.path(outDir, "SI", "FigS6.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[2]],
   width = plotWidth, height = plotHeight, units = "mm")

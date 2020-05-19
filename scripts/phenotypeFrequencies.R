@@ -246,7 +246,7 @@ freqPlotAllRes <- ggplot(
   facet_wrap(vars(communityPrint), ncol = 1, scales = "free", labeller = label_parsed) +
   stat_summary(
     mapping = aes(x = as.character(plate), y = meanF, group = pRes, colour = pRes), inherit.aes = FALSE,
-    fun.y = median, fun.ymin = median, fun.ymax = median,
+    fun = median, fun.min = median, fun.max = median,
     geom = "errorbar", width = 2 / 3, size = 0.5,
     position = position_dodge(width = 0.75), show.legend = TRUE) +
   geom_point(position = position_jitterdodge(jitter.width = 0.1),
@@ -285,14 +285,14 @@ freqPlotAllRes <- ggplot(
     legend.direction = "horizontal",
     strip.text.x = element_text(size = 8, hjust = 0, face = "bold"))
 
-plotWidth <- 100
+plotWidth <- 114
 plotHeight <- 90
 
 ggsave(
-  filename = file.path(outDir, "figures", "fig3.tiff"),
-  device = "tiff",
-  compression = "lzw", type = "cairo",
-  dpi = 600,
+  filename = file.path(outDir, "figures", "fig3.pdf"),
+  # device = "tiff",
+  # compression = "lzw", type = "cairo",
+  # dpi = 600,
   plot = freqPlotAllRes,
   width = plotWidth, height = plotHeight, units = "mm")
 
@@ -424,14 +424,14 @@ comboTreatments <- tribble(
       legend.box.just = "right",
       legend.margin = margin(0, 0, 0, 0))
 
-  plotWidth <- 100
-  plotHeight <- 75
+  plotWidth <- 87
+  plotHeight <- 60
 
   ggsave(
-    filename = file.path(outDir, "figures", "fig4.tiff"),
-    device = "tiff",
-    compression = "lzw", type = "cairo",
-    dpi = 600,
+    filename = file.path(outDir, "figures", "fig4.pdf"),
+    # device = "tiff",
+    # compression = "lzw", type = "cairo",
+    # dpi = 600,
     plot = fABcomparison,
     width = plotWidth, height = plotHeight, units = "mm")
 
@@ -494,7 +494,7 @@ comboTreatments <- tribble(
       mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
 
   ggsave(
-    filename = file.path(outDir, "SI", "S6_FigPartA-timeseries-combinationTreatments-HLphenotype.pdf"),
+    filename = file.path(outDir, "SI", "FigS7_PartA-timeseries-combinationTreatments-HLphenotype.pdf"),
     plot = plotAllPlatesComboTx %+% plotDataHL,
     width = plotWidth, height = plotHeight, units = "mm")
 
@@ -503,7 +503,7 @@ comboTreatments <- tribble(
       mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
   
   ggsave(
-    filename = file.path(outDir,"SI", "S6_FigPartB-timeseries-combinationTreatments-LLphenotype.pdf"),
+    filename = file.path(outDir,"SI", "FigS7_PartB-timeseries-combinationTreatments-LLphenotype.pdf"),
     plot = plotAllPlatesComboTx %+% plotDataLL,
     width = plotWidth, height = plotHeight, units = "mm")
 
