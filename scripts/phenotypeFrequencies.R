@@ -285,7 +285,7 @@ freqPlotAllRes <- ggplot(
     legend.direction = "horizontal",
     strip.text.x = element_text(size = 8, hjust = 0, face = "bold"))
 
-plotWidth <- 114
+plotWidth <- 87
 plotHeight <- 90
 
 ggsave(
