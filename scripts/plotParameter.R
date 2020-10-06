@@ -7,11 +7,13 @@ strainColors <- c(
   "B" = "#ffa10a",
   "A/B" = "#662f89",
   "AB" = "#acdf0c",
-  "E" = "#e53b6a")
+  "E" = "#e53b6a"
+)
 
 plateLabels <- str_c(
   letters[1:6], ") ",
-  c("no treatment", "mono A", "mono B", "combination", "cycling", "mixing"))
+  c("no treatment", "mono A", "mono B", "combination", "cycling", "mixing")
+)
 names(plateLabels) <- 1:6
 
 plotTheme <- theme_bw() +

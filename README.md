@@ -7,37 +7,39 @@ This repository contains all experimental data for the paper LINK AND CITE ONCE 
 
 ## Folder scripts
 
-Contains scripts used for data analysis, plot creation and statistics. Scripts were run in R 3.6.2 in April 2020.
+Contains scripts used for data analysis, plot creation and statistics. All plots were generated in R 3.6.2 in April 2020.
 
 `R sessionInfo()`
 
 ```R
-R version 3.6.2 (2019-12-12)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS Catalina 10.15.4
+R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
-[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] forcats_0.4.0   stringr_1.4.0   dplyr_0.8.4     purrr_0.3.3     readr_1.3.1     tidyr_1.0.2     tibble_2.1.3   
- [8] ggplot2_3.2.1   tidyverse_1.3.0 here_0.1       
+ [1] kableExtra_1.2.1   knitr_1.30         multcompView_0.1-8 multcomp_1.4-14    TH.data_1.0-10     MASS_7.3-51.6      survival_3.1-12    mvtnorm_1.1-1     
+ [9] forcats_0.5.0      stringr_1.4.0      dplyr_1.0.2        purrr_0.3.4        readr_1.3.1        tidyr_1.1.2        tibble_3.0.3       ggplot2_3.3.2     
+[17] tidyverse_1.3.0    here_0.1          
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.3     compiler_3.6.2   dbplyr_1.4.2     tools_3.6.2      digest_0.6.24   
- [8] jsonlite_1.6.1   lubridate_1.7.4  lifecycle_0.1.0  nlme_3.1-142     gtable_0.3.0     lattice_0.20-38  pkgconfig_2.0.3 
-[15] rlang_0.4.4      reprex_0.3.0     cli_2.0.1        rstudioapi_0.11  DBI_1.1.0        haven_2.2.0      withr_2.1.2     
-[22] xml2_1.2.2       httr_1.4.1       fs_1.3.1         generics_0.0.2   vctrs_0.2.2      hms_0.5.3        rprojroot_1.3-2 
-[29] grid_3.6.2       tidyselect_1.0.0 glue_1.3.1       R6_2.4.1         fansi_0.4.1      readxl_1.3.1     farver_2.0.3    
-[36] modelr_0.1.5     magrittr_1.5     backports_1.1.5  scales_1.1.0     rvest_0.3.5      assertthat_0.2.1 colorspace_1.4-1
-[43] labeling_0.3     stringi_1.4.6    lazyeval_0.2.2   munsell_0.5.0    broom_0.5.4      crayon_1.3.4
+ [1] Rcpp_1.0.5        lubridate_1.7.9   lattice_0.20-41   zoo_1.8-8         utf8_1.1.4        assertthat_0.2.1  rprojroot_1.3-2   digest_0.6.25    
+ [9] R6_2.4.1          cellranger_1.1.0  backports_1.1.10  reprex_0.3.0      evaluate_0.14     httr_1.4.2        pillar_1.4.6      rlang_0.4.7      
+[17] readxl_1.3.1      rstudioapi_0.11   blob_1.2.1        Matrix_1.2-18     rmarkdown_2.3     labeling_0.3      splines_4.0.2     webshot_0.5.2    
+[25] munsell_0.5.0     broom_0.7.0       compiler_4.0.2    modelr_0.1.8      xfun_0.17         pkgconfig_2.0.3   htmltools_0.5.0   tidyselect_1.1.0 
+[33] codetools_0.2-16  fansi_0.4.1       viridisLite_0.3.0 crayon_1.3.4      dbplyr_1.4.4      withr_2.3.0       grid_4.0.2        jsonlite_1.7.1   
+[41] gtable_0.3.0      lifecycle_0.2.0   DBI_1.1.0         magrittr_1.5      scales_1.1.1      cli_2.0.2         stringi_1.5.3     farver_2.0.3     
+[49] fs_1.5.0          xml2_1.3.2        ellipsis_0.3.1    generics_0.0.2    vctrs_0.3.4       sandwich_3.0-0    tools_4.0.2       glue_1.4.2       
+[57] hms_0.5.3         colorspace_1.4-1  rvest_0.3.6       haven_2.3.1  
 ```
 
 ## 1-phenotypeDefinition.csv
