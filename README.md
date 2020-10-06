@@ -27,19 +27,22 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] kableExtra_1.2.1   knitr_1.30         multcompView_0.1-8 multcomp_1.4-14    TH.data_1.0-10     MASS_7.3-51.6      survival_3.1-12    mvtnorm_1.1-1     
- [9] forcats_0.5.0      stringr_1.4.0      dplyr_1.0.2        purrr_0.3.4        readr_1.3.1        tidyr_1.1.2        tibble_3.0.3       ggplot2_3.3.2     
-[17] tidyverse_1.3.0    here_0.1          
+ [1] kableExtra_1.2.1   knitr_1.30         multcompView_0.1-8 multcomp_1.4-14    TH.data_1.0-10    
+ [6] MASS_7.3-51.6      survival_3.1-12    mvtnorm_1.1-1      forcats_0.5.0      stringr_1.4.0     
+[11] dplyr_1.0.2        purrr_0.3.4        readr_1.3.1        tidyr_1.1.2        tibble_3.0.3      
+[16] ggplot2_3.3.2      tidyverse_1.3.0    here_0.1          
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5        lubridate_1.7.9   lattice_0.20-41   zoo_1.8-8         utf8_1.1.4        assertthat_0.2.1  rprojroot_1.3-2   digest_0.6.25    
- [9] R6_2.4.1          cellranger_1.1.0  backports_1.1.10  reprex_0.3.0      evaluate_0.14     httr_1.4.2        pillar_1.4.6      rlang_0.4.7      
-[17] readxl_1.3.1      rstudioapi_0.11   blob_1.2.1        Matrix_1.2-18     rmarkdown_2.3     labeling_0.3      splines_4.0.2     webshot_0.5.2    
-[25] munsell_0.5.0     broom_0.7.0       compiler_4.0.2    modelr_0.1.8      xfun_0.17         pkgconfig_2.0.3   htmltools_0.5.0   tidyselect_1.1.0 
-[33] codetools_0.2-16  fansi_0.4.1       viridisLite_0.3.0 crayon_1.3.4      dbplyr_1.4.4      withr_2.3.0       grid_4.0.2        jsonlite_1.7.1   
-[41] gtable_0.3.0      lifecycle_0.2.0   DBI_1.1.0         magrittr_1.5      scales_1.1.1      cli_2.0.2         stringi_1.5.3     farver_2.0.3     
-[49] fs_1.5.0          xml2_1.3.2        ellipsis_0.3.1    generics_0.0.2    vctrs_0.3.4       sandwich_3.0-0    tools_4.0.2       glue_1.4.2       
-[57] hms_0.5.3         colorspace_1.4-1  rvest_0.3.6       haven_2.3.1  
+ [1] Rcpp_1.0.5        lubridate_1.7.9   lattice_0.20-41   zoo_1.8-8         utf8_1.1.4        assertthat_0.2.1 
+ [7] rprojroot_1.3-2   digest_0.6.25     R6_2.4.1          cellranger_1.1.0  backports_1.1.10  reprex_0.3.0     
+[13] evaluate_0.14     httr_1.4.2        pillar_1.4.6      rlang_0.4.7       readxl_1.3.1      rstudioapi_0.11  
+[19] blob_1.2.1        Matrix_1.2-18     rmarkdown_2.3     labeling_0.3      splines_4.0.2     webshot_0.5.2    
+[25] munsell_0.5.0     broom_0.7.0       compiler_4.0.2    modelr_0.1.8      xfun_0.17         pkgconfig_2.0.3  
+[31] htmltools_0.5.0   tidyselect_1.1.0  codetools_0.2-16  fansi_0.4.1       viridisLite_0.3.0 crayon_1.3.4     
+[37] dbplyr_1.4.4      withr_2.3.0       grid_4.0.2        jsonlite_1.7.1    gtable_0.3.0      lifecycle_0.2.0  
+[43] DBI_1.1.0         magrittr_1.5      scales_1.1.1      cli_2.0.2         stringi_1.5.3     farver_2.0.3     
+[49] fs_1.5.0          xml2_1.3.2        ellipsis_0.3.1    generics_0.0.2    vctrs_0.3.4       sandwich_3.0-0   
+[55] tools_4.0.2       glue_1.4.2        hms_0.5.3         colorspace_1.4-1  rvest_0.3.6       haven_2.3.1 
 ```
 
 ## 1-phenotypeDefinition.csv
