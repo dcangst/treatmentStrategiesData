@@ -557,7 +557,7 @@ plotDataHL <- filter(meanFrequenciesCombo, pType == "HL") %>%
   mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
 
 ggsave(
-  filename = file.path(outDir, "SI", "FigS7_PartA-timeseries-combinationTreatments-HLphenotype.pdf"),
+  filename = file.path(outDir, "SI", "FigS8_PartA-timeseries-combinationTreatments-HLphenotype.pdf"),
   plot = plotAllPlatesComboTx %+% plotDataHL,
   width = plotWidth, height = plotHeight, units = "mm"
 )
@@ -567,7 +567,7 @@ plotDataLL <- filter(meanFrequenciesCombo, pType == "LL") %>%
   mutate(p = fct_relevel(p, levels = c("U", "A", "A/B")))
 
 ggsave(
-  filename = file.path(outDir, "SI", "FigS7_PartB-timeseries-combinationTreatments-LLphenotype.pdf"),
+  filename = file.path(outDir, "SI", "FigS8_PartB-timeseries-combinationTreatments-LLphenotype.pdf"),
   plot = plotAllPlatesComboTx %+% plotDataLL,
   width = plotWidth, height = plotHeight, units = "mm"
 )

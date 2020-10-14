@@ -96,6 +96,7 @@ labelNudge <- 0.01
 mutFrequencyPlotData <- mutFrequency %>%
   filter(treatment != "none") %>%
   mutate(
+    treatment = factor(treatment, levels = c("A", "B", "AB")),
     fLabel = if_else(f + labelNudge > 0, f + labelNudge, f + labelNudge)
   )
 
@@ -104,20 +105,22 @@ mutFrequencyPlot <- ggplot(
   mapping = aes(
     x = treatment, y = f,
     label = str_c(nRes, "/", nTot)
-  )
-) +
+  )) +
   geom_col() +
   geom_text(mapping = aes(y = fLabel), vjust = 0, size = 1.5) +
   scale_y_continuous("mutant frequency", limits = c(0, 1)) +
-  scale_x_discrete("") +
-  plotTheme +
-  theme(axis.title.x = element_blank())
+  scale_x_discrete("treatment", labels = c(
+    "A" = "A\n(Nal 20μg/ml)",
+    "B" = "B\n(Sm 12.5μg/ml)",
+    "AB" = "AB\n(Nal 20μg/ml +\nSm 12.5μg/ml)")) +
+  plotTheme
 
-plotWidth <- 50
+plotWidth <- 3 * 25
 plotHeight <- 90
 
 ggsave(
-  filename = file.path(outDir, "figures", "temp", "mutantFrequency.pdf"),
+  filename = file.path(outDir, "SI", "FigS2_partA.pdf"),
+  device = cairo_pdf,
   # device = "tiff",
   # compression = "lzw", type = "cairo",
   # dpi = 600,

@@ -50,26 +50,43 @@ estimates <- bind_rows(estimate) %>%
       str_c(strain, " -> ", drug, "R"),
       levels = c("mutS -> NalR", "mutSSmR -> NalR", "mutS -> SmR", "mutSNalR -> SmR")
     )
-  )
+  ) 
 
 estimates
 
+strainLabels <- c(
+  "mutS" = "strain S\n(ΔmutS)",
+  "mutSNalR" = "strain A\n(ΔmutS NalR)",
+  "mutSSmR" = "strain B\n(ΔmutS SmR)")
+
 ftPlot <- ggplot(
-  data = estimates,
-  mapping = aes(strain_drug, mutProb)
-) +
+    data = estimates,
+    mapping = aes(drug, mutProb)) +
+  facet_grid(cols = vars(strain),
+    scales = "free_x", space = "free_x", 
+    switch = "x", labeller = labeller(strain = strainLabels)) +
   geom_pointrange(aes(ymin = mutProb95low, ymax = mutProb95high)) +
-  scale_y_log10("mutation probability (95% conf. interval)", labels = label_scientific()) +
-  scale_x_discrete("") +
+  scale_y_log10(
+    "mutation probability (95% conf. interval)",
+    labels = label_scientific()) +
+  scale_x_discrete(NULL, labels = c("Nal" = "Nal 40μg/ml", "Sm" = "Sm 100μg/ml")) +
   plotTheme +
-  theme(axis.title.x = element_blank())
+  theme(
+    # facet labels
+     strip.background = element_rect(fill = NA, color = NA),
+     strip.text.x = element_text(hjust = 0.5),
+     strip.placement = "outside",
+    # axis.line.x  = element_line(color = "black", size = 0.25)
+  )
+ftPlot
 
 
-plotWidth <- 100
+plotWidth <- 4 * 25
 plotHeight <- 90
 
 ggsave(
-  filename = file.path(outDir, "figures", "temp", "mutationProbability.pdf"),
+  filename = file.path(outDir, "SI", "FigS2_partB.pdf"),
+  device = cairo_pdf,
   # device = "tiff",
   # compression = "lzw", type = "cairo",
   # dpi = 600,

@@ -53,7 +53,7 @@ plotAllPlatesRibbon <- ggplot(
     mutate(p = fct_relevel(p, levels = c("U", "A", "A/B"))),
   mapping = aes(x = transfer, y = mean, color = p)
 ) +
-  facet_wrap(vars(plate), ncol = 2, nrow = 3, labeller = labeller(plate = plateLabels)) +
+  facet_wrap(vars(plate), ncol = 3, nrow = 2, labeller = labeller(plate = plateLabelsFig1)) +
   geom_ribbon(aes(x = transfer, ymin = min, ymax = max, fill = p), alpha = 0.25, inherit.aes = FALSE)
 
 plotAllPlatesSensitiveSim <- plotAllPlatesRibbon +
@@ -68,7 +68,7 @@ plotAllPlatesSensitiveSim <- plotAllPlatesRibbon +
   scale_colour_manual(
     name = "Phenotype",
     values = strainColors,
-    guide = guide_legend(nrow = 3)
+    guide = guide_legend(ncol = 1)
   ) +
   scale_fill_manual(
     name = "Phenotype",
@@ -80,21 +80,17 @@ plotAllPlatesSensitiveSim <- plotAllPlatesRibbon +
   ) +
   plotTheme +
   theme(
-    legend.position = c(0.75, 0.45),
-    legend.box.background = element_rect(size = 0.3),
+    legend.position = "right",
     legend.key.size = unit(7, "pt"),
     legend.key.width = unit(7, "pt"),
     legend.key.height = unit(7, "pt"),
-    legend.title = element_blank(),
-    legend.margin = margin(0, 4, 4, 4),
-    legend.justification = c(0, 0),
-    legend.direction = "vertical"
+    legend.justification = c(1, 1),
   )
 
-plotWidth <- 110
-plotHeight <- 100
+plotWidth <- 178
+plotHeight <- 80
 ggsave(
-  filename = file.path(outDir, "figures", "fig1partA-timeseries-sensitiveCommunity.pdf"),
+  filename = file.path(outDir, "figures", "fig1partC-timeseries-sensitiveCommunity.pdf"),
   plot = plotAllPlatesSensitiveSim,
   dpi = 600,
   width = plotWidth, height = plotHeight, units = "mm"
@@ -107,6 +103,7 @@ plotWidth <- 110
 plotHeight <- 150
 
 plotAllPlatesSI <- plotAllPlatesRibbon +
+  facet_wrap(vars(plate), ncol = 2, nrow = 3, labeller = labeller(plate = plateLabels))
   # mean line
   geom_line(size = 0.3) +
   scale_colour_manual(
@@ -133,21 +130,21 @@ plateLabelsT53[3] <- "c) mono B / A (40+)"
 plotAllPlatesSISensitive <- plotAllPlatesSI +
   facet_wrap(vars(plate), ncol = 2, nrow = 3, labeller = labeller(plate = plateLabelsT53))
 ggsave(
-  filename = file.path(outDir, "SI", "FigS4.pdf"),
+  filename = file.path(outDir, "SI", "FigS5.pdf"),
   plot = plotAllPlatesSISensitive %+% meanFrequencies[[1]],
   width = plotWidth, height = plotHeight, units = "mm"
 )
 
 # complete timeseries singleResistantCommunity
 ggsave(
-  filename = file.path(outDir, "SI", "FigS5.pdf"),
+  filename = file.path(outDir, "SI", "FigS6.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[3]],
   width = plotWidth, height = plotHeight, units = "mm"
 )
 
 # complete timeseries doubleResistantCommunity
 ggsave(
-  filename = file.path(outDir, "SI", "FigS6.pdf"),
+  filename = file.path(outDir, "SI", "FigS7.pdf"),
   plot = plotAllPlatesSI %+% meanFrequencies[[2]],
   width = plotWidth, height = plotHeight, units = "mm"
 )

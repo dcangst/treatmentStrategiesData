@@ -16,6 +16,12 @@ plateLabels <- str_c(
 )
 names(plateLabels) <- 1:6
 
+plateLabelsFig1 <- str_c(
+  letters[3:8], ") ",
+  c("no treatment", "mono A", "mono B", "combination", "cycling", "mixing")
+)
+names(plateLabelsFig1) <- 1:6
+
 plotTheme <- theme_bw() +
   theme(
     # overall text size
