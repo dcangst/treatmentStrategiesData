@@ -49,10 +49,9 @@ estimates <- bind_rows(estimate) %>%
     strain_drug = factor(
       str_c(strain, " -> ", drug, "R"),
       levels = c("mutS -> NalR", "mutSSmR -> NalR", "mutS -> SmR", "mutSNalR -> SmR")
-    )
-  ) 
-
-estimates
+    ),
+    drug = factor(drug, levels = c("Sm", "Nal"), labels = c("Sm 100μg/ml", "Nal 40μg/ml"))
+  )
 
 strainLabels <- c(
   "mutS" = "strain S\n(ΔmutS)",
@@ -61,15 +60,15 @@ strainLabels <- c(
 
 ftPlot <- ggplot(
     data = estimates,
-    mapping = aes(drug, mutProb)) +
-  facet_grid(cols = vars(strain),
-    scales = "free_x", space = "free_x", 
-    switch = "x", labeller = labeller(strain = strainLabels)) +
+    mapping = aes(strain, mutProb)) +
+  facet_grid(cols = vars(drug),
+    scales = "free_x", space = "free_x",
+    switch = "x") +
   geom_pointrange(aes(ymin = mutProb95low, ymax = mutProb95high)) +
   scale_y_log10(
     "mutation probability (95% conf. interval)",
     labels = label_scientific()) +
-  scale_x_discrete(NULL, labels = c("Nal" = "Nal 40μg/ml", "Sm" = "Sm 100μg/ml")) +
+  scale_x_discrete(NULL, labels = strainLabels) +
   plotTheme +
   theme(
     # facet labels
@@ -78,8 +77,6 @@ ftPlot <- ggplot(
      strip.placement = "outside",
     # axis.line.x  = element_line(color = "black", size = 0.25)
   )
-ftPlot
-
 
 plotWidth <- 4 * 25
 plotHeight <- 90
